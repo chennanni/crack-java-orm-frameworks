@@ -4,16 +4,10 @@ import java.sql.*;
 
 public class JdbcImpl {
     public Connection conn;
-    private String jdbcDriver = "org.h2.Driver";
-    private String jdbcUrl = "jdbc:h2:file:F:/H2/db1";
-    private String jdbcUsername = "sa";
-    private String jdbcPassword = "";
-    private String sqlSelect = "select * from ACCOUNT";
-    private String sqlUpdate = "update ACCOUNT set name = \"Charlie\" where id = 2";
     public Connection connectDB() {
         // register jdbc driver
         try {
-            Class.forName(jdbcDriver);
+            Class.forName(DbConfig.JDBC_DRIVER);
         } catch(ClassNotFoundException ex) {
             System.out.println("Error: unable to load driver class!");
             System.exit(1);
@@ -21,7 +15,7 @@ public class JdbcImpl {
 
         // connect to db
         try {
-            Connection conn = DriverManager.getConnection(jdbcUrl, jdbcUsername, jdbcPassword);
+            Connection conn = DriverManager.getConnection(DbConfig.JDBC_URL, DbConfig.JDBC_USERNAME, DbConfig.JDBC_PASSWORD);
             System.out.println("connect successfully :)");
             return conn;
         } catch (SQLException e) {
@@ -39,7 +33,7 @@ public class JdbcImpl {
         }
     }
 
-    public void updateData() {
+    public void updateData(String sqlUpdate) {
         PreparedStatement ps;
         try {
             ps = conn.prepareStatement(sqlUpdate);
@@ -51,7 +45,7 @@ public class JdbcImpl {
         }
     }
 
-    public void selectData() {
+    public void selectData(String sqlSelect) {
         if(conn != null) {
             try {
                 Statement st;

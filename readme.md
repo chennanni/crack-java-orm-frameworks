@@ -27,9 +27,10 @@ As a user, I can do simple CRUD query.
   - run `sql/init_db_schema.sql`
 - start application
   - maven import
+  - modify `DbConfig` if needed
   - run `org.example.jdbc.App`
 
-example results below:
+example output below:
 
 ~~~
 connect successfully :)
