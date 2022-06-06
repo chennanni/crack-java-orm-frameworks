@@ -3,9 +3,9 @@
 This project is to demonstrate / implement how to make db operations using common ORM technology / frameworks.
 
 - JDBC
-- Hibernate
-- Mybatis
 - Spring JPA / Spring Data
+  - Hibernate
+  - Mybatis
 
 Overall, from top to bottom, there's less transparency, but in return, you write less code.
 
@@ -39,6 +39,16 @@ ID	NAME
 2	Bob	
 connection closed, bye...
 ~~~
+
+## spring jpa
+
+- setup h2
+- start application
+  - maven import
+  - modify `application.properties`
+  - run `org.example.springjpa.App`
+
+(note: if you remove `application.properties`, spring will connect to in memory h2 db if the driver is in place)
 
 # Reference
 
